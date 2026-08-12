@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Update Student</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Update Student</h1>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="old_roll_no"
+            placeholder="Current Roll Number"
+            required
+        >
+
+        <input
+            type="text"
+            name="name"
+            placeholder="New Student Name"
+            required
+        >
+
+        <input
+            type="text"
+            name="new_roll_no"
+            placeholder="New Roll Number"
+            required
+        >
+
+        <button type="submit">
+            Update Student
+        </button>
+
+    </form>
+
+    {% if message %}
+
+        <div class="message">
+            {{ message }}
+        </div>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">Back to Home</a>
+
+</div>
+
+</body>
+
+</html>
