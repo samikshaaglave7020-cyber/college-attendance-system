@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Student</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0;
+            font-size: 18px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #ddd;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .student {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Search Student</h1>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="roll_no"
+            placeholder="Enter Roll Number"
+            required
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    {% if student %}
+
+    <div class="student">
+
+        <h2>{{ student['name'] }}</h2>
+
+        <p>
+            <strong>Roll Number:</strong>
+            {{ student['roll_no'] }}
+        </p>
+
+        <h3>Attendance</h3>
+
+        {% if attendance %}
+
+        <table>
+
+            <tr>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+
+            {% for record in attendance %}
+
+            <tr>
+                <td>{{ record['subject'] }}</td>
+                <td>{{ record['date'] }}</td>
+                <td>{{ record['status'] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <p>No attendance records found.</p>
+
+        {% endif %}
+
+    </div>
+
+    {% elif request.method == "POST" %}
+
+    <h3>Student not found.</h3>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">Back to Home</a>
+
+</div>
+
+</body>
+</html>
