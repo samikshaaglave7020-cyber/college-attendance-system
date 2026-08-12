@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #eeeeee;
+    color: #222;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background: #ddd;
+}
+
+/* Dashboard */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+    font-size: 30px;
+    margin: 5px;
+}
+
+.card p {
+    margin: 5px;
+    font-size: 16px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* Navigation Bar */
+
+.navbar {
+    background: white;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
