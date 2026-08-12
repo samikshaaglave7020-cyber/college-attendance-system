@@ -1,0 +1,51 @@
+<form method="POST" action="/mark_attendance">
+
+    <label>Student</label>
+
+    <select name="roll_no" required>
+        <option value="">Select Student</option>
+
+        {% for student in students %}
+        <option value="{{ student['roll_no'] }}">
+            {{ student['roll_no'] }} - {{ student['name'] }}
+        </option>
+        {% endfor %}
+
+    </select>
+
+
+    <label>Subject</label>
+
+    <input
+        type="text"
+        name="subject"
+        placeholder="Enter subject"
+        required
+    >
+
+
+    <label>Date</label>
+
+    <input
+        type="date"
+        name="date"
+        required
+    >
+
+
+    <label>Attendance</label>
+
+    <select name="status" required>
+
+        <option value="">Select Status</option>
+        <option value="P">Present</option>
+        <option value="A">Absent</option>
+
+    </select>
+
+
+    <button type="submit">
+        SAVE ATTENDANCE
+    </button>
+
+</form>
