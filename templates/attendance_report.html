@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Attendance Report</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .student {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #ddd;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+
+        .good {
+            color: green;
+            font-weight: bold;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Attendance Report</h1>
+
+    {% if reports %}
+
+        {% for report in reports %}
+
+        <div class="student">
+
+            <h2>{{ report.name }}</h2>
+
+            <p>
+                <b>Roll Number:</b>
+                {{ report.roll_no }}
+            </p>
+
+            <h3>
+                Subject: {{ report.subject }}
+            </h3>
+
+            <p>
+                <b>Total Classes:</b>
+                {{ report.total }}
+            </p>
+
+            <p>
+                <b>Present:</b>
+                {{ report.present }}
+            </p>
+
+            <p>
+                <b>Absent:</b>
+                {{ report.absent }}
+            </p>
+
+            <p>
+                <b>Attendance:</b>
+                {{ "%.2f"|format(report.percentage) }}%
+            </p>
+
+            {% if report.percentage < 75 %}
+
+                <p class="warning">
+                    ⚠ Attendance is below 75%
+                </p>
+
+            {% else %}
+
+                <p class="good">
+                    ✓ Attendance is satisfactory
+                </p>
+
+            {% endif %}
+
+
+            <table>
+
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for record in report.records %}
+
+                <tr>
+
+                    <td>
+                        {{ record.date }}
+                    </td>
+
+                    <td>
+                        {{ record.status }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <h2>No attendance records found.</h2>
+
+    {% endif %}
+
+    <a class="back" href="/">
+        Back to Home
+    </a>
+
+</div>
+
+</body>
+
+</html>
