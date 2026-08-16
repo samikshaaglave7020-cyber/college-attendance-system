@@ -3,7 +3,9 @@ import sqlite3
 
 app = Flask(__name__)
 
-DATABASE = "attendance.db"
+import os
+
+DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "attendance.db")
 
 
 def get_db():
@@ -34,7 +36,7 @@ def init_db():
 
     conn.commit()
     conn.close()
-
+init_db()
 @app.route("/")
 def home():
 
@@ -370,7 +372,7 @@ def update_student():
         "update_student.html",
         message=message
     )
-    init_db()
+    
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
