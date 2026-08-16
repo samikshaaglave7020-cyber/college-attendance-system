@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>College Attendance Management</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+        College Attendance<br>
+        Management System
+    </h1>
+
+
+    <!-- DASHBOARD -->
+
+    <div class="dashboard">
+
+        <div class="card">
+            <h2>{{ total_students }}</h2>
+            <p>Total Students</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ total_attendance }}</h2>
+            <p>Attendance Records</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ total_present }}</h2>
+            <p>Total Present</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ total_absent }}</h2>
+            <p>Total Absent</p>
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <h2>Student Management</h2>
+
+    <a href="/add_student">
+        <button type="button">Add Student</button>
+    </a>
+
+    <a href="/students">
+        <button type="button">View Students</button>
+    </a>
+
+    <a href="/search_student">
+        <button type="button">Search Student</button>
+    </a>
+
+    <a href="/update_student">
+        <button type="button">Update Student</button>
+    </a>
+
+    <a href="/delete_student">
+        <button type="button">Delete Student</button>
+    </a>
+
+
+    <h2>Attendance Management</h2>
+
+    <a href="/mark_attendance">
+        <button type="button">Mark Attendance</button>
+    </a>
+
+    <a href="/attendance_report">
+        <button type="button">Attendance Report</button>
+    </a>
+
+</div>
+
+</body>
+{% include 'navbar.html' %}
+
+</html>
