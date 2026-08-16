@@ -10,6 +10,30 @@ def get_db():
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
+def init_db():
+
+    conn = get_db()
+
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS students (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            roll_no TEXT UNIQUE
+        )
+    """)
+
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS attendance (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            roll_no TEXT,
+            subject TEXT,
+            status TEXT,
+            date TEXT
+        )
+    """)
+
+    conn.commit()
+    conn.close()
 
 @app.route("/")
 def home():
@@ -346,7 +370,7 @@ def update_student():
         "update_student.html",
         message=message
     )
-    
+    init_db()
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
